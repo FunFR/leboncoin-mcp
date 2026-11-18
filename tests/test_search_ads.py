@@ -159,3 +159,16 @@ async def test_search_takes_a_category_by_its_name_within_its_parent(
     await call("search_ads", {"category": "Voitures"})
 
     assert leboncoin.last_search["category"] is Category.VEHICULES_VOITURES
+
+
+async def test_an_ad_missing_place_details_does_not_break_the_search(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    location = leboncoin.search_raw["ads"][0]["location"]
+    for field in ("department_name", "city", "zipcode"):
+        del location[field]
+
+    result = await call("search_ads", {})
+
+    first = result.structured_content["ads"][0]
+    assert (first["department"], first["city"], first["zipcode"]) == (None, None, None)

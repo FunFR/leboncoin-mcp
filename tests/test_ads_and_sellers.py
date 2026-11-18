@@ -115,3 +115,13 @@ async def test_a_silent_leboncoin_is_reported(
     result = await call("search_ads", {})
 
     assert "Leboncoin did not answer:" in error_text(result)
+
+
+async def test_an_ad_missing_place_details_is_still_returned(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    del leboncoin.ad_raw["location"]["department_name"]
+
+    result = await call("get_ad", {"ad": "1"})
+
+    assert result.structured_content["department"] is None

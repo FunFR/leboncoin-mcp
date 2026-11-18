@@ -50,9 +50,9 @@ class AdSummary(BaseModel):
     id: int
     title: str
     price: float | None
-    city: str
-    zipcode: str
-    department: str
+    city: str | None
+    zipcode: str | None
+    department: str | None
     published_at: str
     seller_type: str
     shippable: bool
@@ -72,23 +72,14 @@ class SellerReference(BaseModel):
     type: str
 
 
-class FullAd(BaseModel):
-    id: int
-    title: str
+class FullAd(AdSummary):
     description: str
-    price: float | None
     category: str
     attributes: dict[str, str] = Field(
         description="Facts specific to the ad's category, such as mileage or size."
     )
     images: list[str]
-    city: str
-    zipcode: str
-    department: str
-    published_at: str
-    shippable: bool
     seller: SellerReference
-    url: str
 
 
 class Rating(BaseModel):
@@ -137,10 +128,8 @@ async def _ask[T](question: Callable[[], T], missing: str) -> T:
 def _full_ad(ad: Ad) -> FullAd:
     owner = ad.raw.get("owner", {})
     return FullAd(
-        id=ad.id,
-        title=ad.title,
+        **_summary(ad).model_dump(),
         description=ad.body,
-        price=ad.price,
         category=ad.category_name,
         attributes={
             attribute.key_label: attribute.value_label
@@ -148,15 +137,9 @@ def _full_ad(ad: Ad) -> FullAd:
             if attribute.generic and attribute.key_label
         },
         images=ad.images or [],
-        city=ad.location.city,
-        zipcode=ad.location.zipcode,
-        department=ad.location.department_name,
-        published_at=ad.first_publication_date,
-        shippable=_attribute(ad, "shippable") == "true",
         seller=SellerReference(
             id=owner.get("user_id"), name=owner.get("name"), type=owner.get("type")
         ),
-        url=ad.url,
     )
 
 
