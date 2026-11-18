@@ -76,11 +76,25 @@ async def test_an_unknown_city_is_reported() -> None:
     assert "Unknown city 'Zzzzqx'" in str(raised.value)
 
 
-async def test_an_unreachable_geocoder_is_reported() -> None:
-    def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(503)
+# A 302 to sorry.data.gouv.fr is how the service answered during its 2026-11-18 outage.
+@pytest.mark.parametrize(
+    "outage",
+    [
+        httpx.Response(503),
+        httpx.Response(302, headers={"Location": "http://sorry.data.gouv.fr"}),
+    ],
+    ids=["unavailable", "redirected"],
+)
+async def test_a_geocoder_outage_points_to_departments(outage: httpx.Response) -> None:
+    failing = GeoApiGeocoder(
+        httpx.AsyncClient(transport=httpx.MockTransport(lambda _: outage))
+    )
 
-    failing = GeoApiGeocoder(httpx.AsyncClient(transport=httpx.MockTransport(handler)))
-
-    with pytest.raises(ToolError, match="Could not locate 'Lyon'"):
+    with pytest.raises(ToolError) as raised:
         await failing.locate("Lyon")
+
+    message = str(raised.value)
+    assert message.startswith(
+        "Could not locate 'Lyon': the city service failed. "
+        "Retry without cities, using departments instead."
+    )
