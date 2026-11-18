@@ -1,7 +1,7 @@
 import os
 from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Literal, cast
+from typing import Literal, get_args
 
 import httpx
 import lbc
@@ -9,12 +9,13 @@ import lbc
 from leboncoin_mcp.geocoding import GeoApiGeocoder
 from leboncoin_mcp.server import build_server
 
-TRANSPORTS = ("stdio", "streamable-http")
+type Transport = Literal["stdio", "streamable-http"]
+TRANSPORTS: tuple[Transport, ...] = get_args(Transport.__value__)
 
 
 @dataclass(frozen=True)
 class Settings:
-    transport: Literal["stdio", "streamable-http"]
+    transport: Transport
     host: str
     port: int
     path: str
@@ -25,7 +26,7 @@ class Settings:
         if transport not in TRANSPORTS:
             raise ValueError(f"MCP_TRANSPORT must be one of {', '.join(TRANSPORTS)}.")
         return Settings(
-            transport=cast(Literal["stdio", "streamable-http"], transport),
+            transport=transport,
             host=env.get("MCP_HOST", "127.0.0.1"),
             port=int(env.get("MCP_PORT", "8000")),
             path=env.get("MCP_PATH", "/mcp"),

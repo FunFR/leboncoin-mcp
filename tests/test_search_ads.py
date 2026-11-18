@@ -172,3 +172,17 @@ async def test_an_ad_missing_place_details_does_not_break_the_search(
 
     first = result.structured_content["ads"][0]
     assert (first["department"], first["city"], first["zipcode"]) == (None, None, None)
+
+
+async def test_an_ad_priced_at_zero_keeps_its_price(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    ads = leboncoin.search_raw["ads"]
+    ads[0] |= {"price": [0], "price_cents": 0}
+    del ads[1]["price"], ads[1]["price_cents"]
+
+    result = await call("search_ads", {})
+
+    summaries = result.structured_content["ads"]
+    assert summaries[0]["price"] == 0.0
+    assert summaries[1]["price"] is None

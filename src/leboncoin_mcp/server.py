@@ -1,6 +1,6 @@
 import re
 from collections.abc import Callable
-from typing import Any, Literal, Protocol
+from typing import Annotated, Any, Literal, Protocol
 
 import anyio
 from lbc import Ad, AdType, City, Department, OwnerType, Region, Search, Sort, User
@@ -15,13 +15,16 @@ from leboncoin_mcp.geocoding import CityPoint
 # lbc only takes closed price ranges.
 NO_PRICE_LIMIT = 1_000_000_000
 
-SORTS = {
+type SortName = Literal["relevance", "newest", "cheapest", "most_expensive"]
+type SellerTypeName = Literal["all", "private", "pro"]
+
+SORTS: dict[SortName, Sort] = {
     "relevance": Sort.RELEVANCE,
     "newest": Sort.NEWEST,
     "cheapest": Sort.CHEAPEST,
     "most_expensive": Sort.EXPENSIVE,
 }
-SELLER_TYPES = {
+SELLER_TYPES: dict[SellerTypeName, OwnerType] = {
     "all": OwnerType.ALL,
     "private": OwnerType.PRIVATE,
     "pro": OwnerType.PRO,
@@ -110,10 +113,10 @@ def _ad_id(ad: str) -> str:
     return found.group(1)
 
 
-async def _ask[T](question: Callable[[], T], missing: str) -> T:
+async def _call_leboncoin[T](request: Callable[[], T], missing: str) -> T:
     """Asks Leboncoin, telling a block apart from content that does not exist."""
     try:
-        return await anyio.to_thread.run_sync(question)
+        return await anyio.to_thread.run_sync(request)
     except DatadomeError as error:
         raise ToolError(
             "Blocked: Leboncoin refused to answer this server, whatever was asked. "
@@ -169,11 +172,17 @@ def _attribute(ad: Ad, key: str) -> str | None:
     return attribute.value if attribute else None
 
 
+def _price(ad: Ad) -> float | None:
+    """An ad priced at zero keeps its price, unlike an Unpriced ad."""
+    cents = ad.raw.get("price_cents")
+    return None if cents is None else cents / 100
+
+
 def _summary(ad: Ad) -> AdSummary:
     return AdSummary(
         id=ad.id,
         title=ad.title,
-        price=ad.price,
+        price=_price(ad),
         city=ad.location.city,
         zipcode=ad.location.zipcode,
         department=ad.location.department_name,
@@ -193,7 +202,7 @@ def _has_next_page(search: Search, page: int, limit: int) -> bool:
 def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
     mcp = MCPServer("leboncoin")
 
-    async def locations(
+    async def places(
         cities: list[CityQuery], departments: list[str], regions: list[str]
     ) -> list[City | Department | Region]:
         found: list[City | Department | Region] = []
@@ -220,10 +229,12 @@ def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
         regions: list[str] | None = None,
         price_min: int | None = None,
         price_max: int | None = None,
-        seller_type: Literal["all", "private", "pro"] = "all",
-        shippable_only: bool = False,
-        sort: Literal["relevance", "newest", "cheapest", "most_expensive"] = (
-            "relevance"
+        seller_type: Annotated[
+            SellerTypeName | None, Field(description="all by default.")
+        ] = None,
+        shippable_only: bool | None = None,
+        sort: Annotated[SortName | None, Field(description="relevance by default.")] = (
+            None
         ),
         url: str | None = Field(
             default=None,
@@ -242,28 +253,35 @@ def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
         """
         criteria: dict[str, Any] = {"limit": limit, "page": page}
         if url is not None:
-            given = (text, category, cities, departments, regions, price_min, price_max)
-            if any(value is not None for value in given) or (
+            given = (
+                text,
+                category,
+                cities,
+                departments,
+                regions,
+                price_min,
+                price_max,
                 seller_type,
                 shippable_only,
                 sort,
-            ) != ("all", False, "relevance"):
+            )
+            if any(value is not None for value in given):
                 raise ToolError("A search URL replaces every other criterion.")
             criteria["url"] = url
         else:
-            places = await locations(cities or [], departments or [], regions or [])
+            found = await places(cities or [], departments or [], regions or [])
             criteria |= {
                 "text": text,
-                "locations": places or None,
+                "locations": found or None,
                 "category": names.category(category),
-                "owner_type": SELLER_TYPES[seller_type],
+                "owner_type": SELLER_TYPES[seller_type or "all"],
                 "shippable": True if shippable_only else None,
-                "sort": SORTS[sort],
+                "sort": SORTS[sort or "relevance"],
                 "ad_type": AdType.OFFER,
             }
             if price_min is not None or price_max is not None:
                 criteria["price"] = [price_min or 0, price_max or NO_PRICE_LIMIT]
-        search = await _ask(
+        search = await _call_leboncoin(
             lambda: leboncoin.search(**criteria), "Leboncoin found no such search."
         )
         return SearchResult(
@@ -279,7 +297,7 @@ def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
     ) -> FullAd:
         """Get an ad's full description, category facts, photos and seller."""
         ad_id = _ad_id(ad)
-        found = await _ask(
+        found = await _call_leboncoin(
             lambda: leboncoin.get_ad(ad_id),
             f"Unavailable ad: {ad_id} was sold, withdrawn or has expired.",
         )
@@ -290,7 +308,7 @@ def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
         seller_id: str = Field(description="The seller id given by get_ad."),
     ) -> Seller:
         """Get a seller's reputation: rating, responsiveness, seniority, activity."""
-        user = await _ask(
+        user = await _call_leboncoin(
             lambda: leboncoin.get_user(seller_id),
             f"Unknown seller: no seller has the id {seller_id!r}.",
         )

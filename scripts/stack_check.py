@@ -13,11 +13,12 @@ from mcp import Client
 from mcp.types import TextContent
 
 TOOLS = {"search_ads", "get_ad", "get_seller"}
+DEADLINE_SECONDS = 120
 
 
-async def wait_for(url: str, attempts: int = 30) -> None:
+async def wait_for(url: str) -> None:
     """Gives a freshly started container time to listen."""
-    for _ in range(attempts - 1):
+    while True:
         try:
             async with httpx.AsyncClient() as http:
                 await http.get(url)
@@ -43,12 +44,20 @@ async def check(url: str, require_live: bool) -> str | None:
     return f"search failed: {text}"
 
 
+async def within_deadline(url: str, require_live: bool) -> str | None:
+    try:
+        with anyio.fail_after(DEADLINE_SECONDS):
+            return await check(url, require_live)
+    except TimeoutError:
+        return f"no answer within {DEADLINE_SECONDS} seconds"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("url", nargs="?", default="http://127.0.0.1:8000/mcp")
     parser.add_argument("--require-live", action="store_true")
     arguments = parser.parse_args()
-    failure = anyio.run(check, arguments.url, arguments.require_live)
+    failure = anyio.run(within_deadline, arguments.url, arguments.require_live)
     if failure:
         sys.exit(f"Stack check failed: {failure}")
     print("Stack check passed.")

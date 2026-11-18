@@ -10,10 +10,8 @@ COPY src ./src
 RUN uv sync --frozen --no-dev --no-editable
 
 FROM python:3.14-slim@sha256:9aaa474097d094040649f2162a627c0049b408f52138d980916788d80f04802f
-# The server needs neither pip nor the Debian fixes still missing from the base image.
-RUN apt-get update \
-    && apt-get upgrade --yes \
-    && rm -rf /var/lib/apt/lists/* /usr/local/lib/python3.14/site-packages/pip* /usr/local/bin/pip* \
+# The server never installs anything: pip only adds vulnerabilities to scan.
+RUN rm -rf /usr/local/lib/python3.14/site-packages/pip* /usr/local/bin/pip* \
     && useradd --system --uid 10001 --no-create-home mcp
 COPY --from=build /app/.venv /app/.venv
 ENV PATH=/app/.venv/bin:$PATH \
