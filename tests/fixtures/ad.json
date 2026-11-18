@@ -1,0 +1,278 @@
+{
+  "list_id": 3291258592,
+  "first_publication_date": "2026-10-19 13:28:10",
+  "index_date": "2026-10-26 12:28:11",
+  "status": "active",
+  "category_id": "55",
+  "category_name": "Vélos",
+  "subject": "Vélo cargo Élé",
+  "body": "Description de l'annonce, retirée des fixtures.",
+  "brand": "leboncoin",
+  "ad_type": "offer",
+  "url": "https://www.leboncoin.fr/ad/velos/3291258592",
+  "price": [
+    700
+  ],
+  "price_cents": 70000,
+  "images": {
+    "thumb_url": "https://img.leboncoin.fr/fixture.jpg",
+    "small_url": "https://img.leboncoin.fr/fixture.jpg",
+    "nb_images": 2,
+    "urls": [
+      "https://img.leboncoin.fr/fixture.jpg",
+      "https://img.leboncoin.fr/fixture.jpg"
+    ],
+    "urls_thumb": [
+      "https://img.leboncoin.fr/fixture.jpg",
+      "https://img.leboncoin.fr/fixture.jpg"
+    ],
+    "urls_large": [
+      "https://img.leboncoin.fr/fixture.jpg",
+      "https://img.leboncoin.fr/fixture.jpg"
+    ]
+  },
+  "attributes": [
+    {
+      "key": "profile_picture_url",
+      "value": "https://img.leboncoin.fr/fixture.jpg",
+      "values": [
+        "https://img.leboncoin.fr/fixture.jpg"
+      ],
+      "value_label": "https://img.leboncoin.fr/fixture.jpg",
+      "generic": false
+    },
+    {
+      "key": "estimated_parcel_weight",
+      "value": "70000",
+      "values": [
+        "70000"
+      ],
+      "value_label": "70000",
+      "generic": false
+    },
+    {
+      "key": "estimated_parcel_size",
+      "value": "L",
+      "values": [
+        "L"
+      ],
+      "value_label": "L",
+      "generic": false
+    },
+    {
+      "key": "is_bundleable",
+      "value": "true",
+      "values": [
+        "true"
+      ],
+      "value_label": "true",
+      "generic": false
+    },
+    {
+      "key": "purchase_cta_visible",
+      "value": "true",
+      "values": [
+        "true"
+      ],
+      "value_label": "true",
+      "generic": false
+    },
+    {
+      "key": "negotiation_cta_visible",
+      "value": "true",
+      "values": [
+        "true"
+      ],
+      "value_label": "true",
+      "generic": false
+    },
+    {
+      "key": "pricing_product",
+      "value": "cargo",
+      "values": [
+        "cargo"
+      ],
+      "value_label": "cargo",
+      "generic": false
+    },
+    {
+      "key": "country_isocode3166",
+      "value": "FR",
+      "values": [
+        "FR"
+      ],
+      "value_label": "FR",
+      "generic": false
+    },
+    {
+      "key": "bicycle_type",
+      "value": "cargo",
+      "values": [
+        "cargo"
+      ],
+      "key_label": "Type",
+      "value_label": "Vélo cargo",
+      "generic": true
+    },
+    {
+      "key": "bicycle_size",
+      "value": "M",
+      "values": [
+        "M"
+      ],
+      "key_label": "Taille",
+      "value_label": "M",
+      "generic": true
+    },
+    {
+      "key": "bicycle_brand",
+      "value": "autre",
+      "values": [
+        "autre"
+      ],
+      "key_label": "Marque",
+      "value_label": "Autre",
+      "generic": true
+    },
+    {
+      "key": "bicycle_color",
+      "value": "noir",
+      "values": [
+        "noir"
+      ],
+      "key_label": "Couleur",
+      "value_label": "Noir",
+      "generic": true
+    },
+    {
+      "key": "bicycle_wheel_size",
+      "value": "260",
+      "values": [
+        "260"
+      ],
+      "key_label": "Taille de roue",
+      "value_label": "26\" (ETRTO 559)",
+      "value_label_reader": "26 pouces, E.T.R.T.O 559",
+      "generic": true
+    },
+    {
+      "key": "condition",
+      "value": "etatneuf",
+      "values": [
+        "etatneuf"
+      ],
+      "key_label": "État",
+      "value_label": "État neuf",
+      "generic": true
+    },
+    {
+      "key": "accessories_univers",
+      "value": "mixte",
+      "values": [
+        "mixte"
+      ],
+      "key_label": "Univers",
+      "value_label": "Mixte",
+      "generic": true
+    },
+    {
+      "key": "shipping_type",
+      "value": "distance",
+      "values": [
+        "distance",
+        "face_to_face"
+      ],
+      "value_label": "distance",
+      "generic": false
+    },
+    {
+      "key": "shipping_cost",
+      "value": "0",
+      "values": [
+        "0"
+      ],
+      "value_label": "0",
+      "generic": false
+    },
+    {
+      "key": "shippable",
+      "value": "true",
+      "values": [
+        "true"
+      ],
+      "value_label": "true",
+      "generic": false
+    },
+    {
+      "key": "is_import",
+      "value": "false",
+      "values": [
+        "false"
+      ],
+      "value_label": "false",
+      "generic": false
+    },
+    {
+      "key": "payment_methods",
+      "value": "installments3x",
+      "values": [
+        "installments3x",
+        "installments4x"
+      ],
+      "value_label": "installments3x",
+      "generic": false
+    }
+  ],
+  "location": {
+    "country_id": "FR",
+    "region_id": "2",
+    "region_name": "Aquitaine",
+    "department_id": "33",
+    "department_name": "Gironde",
+    "city_label": "Bordeaux 33000",
+    "city": "Bordeaux",
+    "zipcode": "33000",
+    "lat": 44.836,
+    "lng": -0.581,
+    "source": "city",
+    "provider": "here",
+    "type": "",
+    "origin_type": "",
+    "is_shape": true,
+    "feature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.58105,
+          44.8367
+        ]
+      },
+      "properties": null
+    }
+  },
+  "owner": {
+    "store_id": "10000001",
+    "user_id": "00000000-0000-4000-8000-000000000001",
+    "type": "private",
+    "name": "Vendeur A",
+    "no_salesmen": true,
+    "activity_sector": ""
+  },
+  "options": {
+    "has_option": false,
+    "booster": false,
+    "photosup": false,
+    "urgent": false,
+    "gallery": false,
+    "sub_toplist": false,
+    "continuous_top_ads": false,
+    "highlight": false
+  },
+  "has_phone": false,
+  "is_boosted": true,
+  "similar": null,
+  "counters": {
+    "favorites": 10
+  }
+}

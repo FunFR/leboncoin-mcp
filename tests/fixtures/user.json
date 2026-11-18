@@ -1,0 +1,41 @@
+{
+  "name": "Vendeur A",
+  "registered_at": "2023-10-02",
+  "location": "",
+  "reply": {
+    "in_minutes": 30,
+    "text": "Répond en moyenne en 30 minutes",
+    "rate_text": "Répond à 100 % des messages",
+    "rate": 100,
+    "reply_time_text": "30 minutes"
+  },
+  "presence": {
+    "status": "OFFLINE",
+    "presence_text": "Dernière activité il y a plus de 30 jours",
+    "last_activity": "2026-10-19T11:26:42Z",
+    "enabled": true
+  },
+  "profile_picture": {
+    "is_default": true,
+    "default": true,
+    "small_url": "https://img.leboncoin.fr/fixture.jpg",
+    "medium_url": "https://img.leboncoin.fr/fixture.jpg",
+    "large_url": "https://img.leboncoin.fr/fixture.jpg",
+    "extra_large_url": "https://img.leboncoin.fr/fixture.jpg"
+  },
+  "badges": [
+    {
+      "type": "global",
+      "name": "Responsiveness3"
+    },
+    {
+      "type": "global",
+      "name": "VerifiedPhoneNumber"
+    }
+  ],
+  "total_ads": 1,
+  "store_id": 10000001,
+  "account_type": "private",
+  "user_id": "00000000-0000-4000-8000-000000000001",
+  "description": ""
+}

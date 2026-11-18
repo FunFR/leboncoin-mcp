@@ -1,0 +1,32 @@
+[project]
+name = "leboncoin-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "FunFR", email = "1670065+FunFR@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "lbc>=1.1.9",
+    "mcp>=2.3.0",
+]
+
+[project.scripts]
+leboncoin-mcp = "leboncoin_mcp:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.19.3",
+    "mypy>=2.4.1",
+    "pip-audit>=2.10.1",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.5",
+]

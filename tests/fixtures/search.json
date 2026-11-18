@@ -1,0 +1,876 @@
+{
+  "total": 239,
+  "total_all": 239,
+  "total_pro": 41,
+  "total_private": 198,
+  "total_active": 0,
+  "total_inactive": 0,
+  "total_shippable": 0,
+  "max_pages": 80,
+  "referrer_id": "68381476-7538-4595-bc6a-96733391869f",
+  "pivot": "{\"ids_to_display\":[\"3291258592\",\"3282334506\",\"3223191305\",\"3306236254\",\"3301482229\",\"3300317764\",\"3301880537\",\"3298183248\",\"3311218873\",\"3263708375\",\"3300997415\",\"3273933289\",\"3308883353\",\"3306436266\",\"3307342980\",\"3307988877\",\"3279576097\",\"3298414231\",\"3305297460\",\"3263610256\",\"3290082088\",\"3308501132\",\"3307558440\",\"3284356177\",\"3297029534\",\"3285186893\",\"3294548235\",\"3310434203\",\"3302173599\",\"3297683018\",\"3287759267\",\"3289590001\",\"3308658099\",\"3288834266\",\"3283263981\",\"3296866501\",\"3282652146\",\"3278157852\",\"2995583787\",\"3205852925\",\"3311731191\",\"3310068282\",\"3309682256\",\"3274130656\",\"3279501377\",\"3294981206\",\"3299521159\",\"3306360446\",\"3268146520\",\"3293573593\",\"3306107682\",\"3307124299\",\"3296485548\",\"3270556980\",\"3279438390\",\"3289594964\",\"3270781033\",\"3267175541\",\"3288166375\",\"3291551037\",\"3308763476\",\"3273038131\",\"3272786196\",\"3273078062\",\"3270438153\",\"3304208825\",\"3278768205\",\"3272751374\",\"3273125631\",\"3242792279\",\"3287746315\",\"3262899515\",\"3261074384\",\"3278055440\",\"3247023221\",\"3274850922\",\"3252145701\",\"3252571942\",\"3252903780\",\"3293357291\",\"3247794727\",\"3248970165\",\"3249762725\",\"3250658450\",\"3258636014\",\"3243518995\",\"3207336550\",\"3294317621\",\"3312040398\",\"3291977582\",\"3309331314\",\"3297871743\",\"3236862972\",\"3302756162\",\"3268111050\",\"3312080715\",\"3311331916\",\"3311375405\",\"3292788270\",\"3308107752\",\"3310789154\",\"3296672579\",\"3235029057\",\"3297830285\",\"3292906149\",\"3290984007\",\"3101263542\",\"3288123076\",\"3303866701\",\"3272955593\",\"3279219542\",\"3276394656\",\"3308597095\",\"3277438442\",\"3308527730\",\"3226438058\",\"3232408908\",\"3307228074\",\"3302852706\",\"3285476189\",\"3235775456\",\"3292826988\",\"3277194936\",\"3309710830\",\"3290303187\",\"3290941641\",\"3245725927\",\"3286970896\",\"3286981990\",\"3286976167\",\"3286973381\",\"3302563362\",\"3307029473\",\"3310789378\",\"3286981365\",\"3286980158\",\"3286978494\",\"3286977742\",\"3286975121\",\"3221935529\",\"3258810615\",\"3279480043\",\"3295288487\",\"3258232108\",\"3259739867\",\"3274847660\",\"3228184976\",\"3296564002\",\"3260865691\",\"3280549568\",\"3280560384\",\"3280710028\",\"3280707853\",\"3306128951\",\"3280592563\",\"3280588195\",\"3242430151\",\"3212009376\",\"3267494152\",\"3280554623\",\"3280578524\",\"3280572147\",\"3292946939\",\"3275641193\",\"3275640434\",\"3265163471\",\"3261228557\",\"3302557945\",\"3127518181\",\"3250150355\",\"3217270425\",\"3262788860\",\"3272149174\",\"3201599972\",\"3258705996\",\"3183702139\",\"3256604871\",\"3247297763\",\"3166983500\",\"3218789056\",\"3280710227\",\"3253245316\",\"3240513238\",\"3236704671\",\"3245554349\",\"3231647381\",\"3205042602\",\"3238587375\",\"3232204103\",\"3197585758\",\"3256665804\",\"3196840657\",\"3219667373\",\"3185344253\",\"3181352724\",\"3187847190\",\"3206692427\",\"3180662907\",\"3207804359\",\"3176673687\",\"3188880744\",\"3167776215\",\"3196459401\",\"3189565569\",\"3176011743\",\"3158965971\",\"3160056756\",\"3174973958\",\"3145056251\",\"3154360915\",\"3111908084\",\"3132349000\",\"3145781340\",\"3122904837\",\"3138083212\",\"3129771854\",\"3107906789\",\"3094349269\",\"3087595956\",\"3080903228\",\"3080826850\",\"3074579152\",\"3064523528\",\"3060842491\",\"3055994234\",\"3048689042\",\"3039263426\",\"3006064286\",\"2967422920\",\"2934712405\",\"2911594897\",\"2863163667\",\"2825223640\",\"2432653596\",\"2425191584\",\"2336232617\",\"2240055887\",\"2236905875\",\"2154260071\"],\"es_pivot\":\"0.031|1651164279000|2154260071\",\"reranker_offset\":3,\"total\":239,\"page_number\":1}",
+  "ads": [
+    {
+      "list_id": 3291258592,
+      "first_publication_date": "2026-10-19 13:28:10",
+      "index_date": "2026-10-26 12:28:11",
+      "status": "active",
+      "category_id": "55",
+      "category_name": "Vélos",
+      "subject": "Vélo cargo Élé",
+      "body": "Description de l'annonce, retirée des fixtures.",
+      "brand": "leboncoin",
+      "ad_type": "offer",
+      "url": "https://www.leboncoin.fr/ad/velos/3291258592",
+      "price": [
+        700
+      ],
+      "price_cents": 70000,
+      "images": {
+        "thumb_url": "https://img.leboncoin.fr/fixture.jpg",
+        "small_url": "https://img.leboncoin.fr/fixture.jpg",
+        "nb_images": 2,
+        "urls": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_thumb": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_large": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ]
+      },
+      "attributes": [
+        {
+          "key": "profile_picture_url",
+          "value": "https://img.leboncoin.fr/fixture.jpg",
+          "values": [
+            "https://img.leboncoin.fr/fixture.jpg"
+          ],
+          "value_label": "https://img.leboncoin.fr/fixture.jpg",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_weight",
+          "value": "70000",
+          "values": [
+            "70000"
+          ],
+          "value_label": "70000",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_size",
+          "value": "L",
+          "values": [
+            "L"
+          ],
+          "value_label": "L",
+          "generic": false
+        },
+        {
+          "key": "is_bundleable",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "purchase_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "negotiation_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "pricing_product",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "value_label": "cargo",
+          "generic": false
+        },
+        {
+          "key": "country_isocode3166",
+          "value": "FR",
+          "values": [
+            "FR"
+          ],
+          "value_label": "FR",
+          "generic": false
+        },
+        {
+          "key": "bicycle_type",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "key_label": "Type",
+          "value_label": "Vélo cargo",
+          "generic": true
+        },
+        {
+          "key": "bicycle_size",
+          "value": "M",
+          "values": [
+            "M"
+          ],
+          "key_label": "Taille",
+          "value_label": "M",
+          "generic": true
+        },
+        {
+          "key": "bicycle_brand",
+          "value": "autre",
+          "values": [
+            "autre"
+          ],
+          "key_label": "Marque",
+          "value_label": "Autre",
+          "generic": true
+        },
+        {
+          "key": "bicycle_color",
+          "value": "noir",
+          "values": [
+            "noir"
+          ],
+          "key_label": "Couleur",
+          "value_label": "Noir",
+          "generic": true
+        },
+        {
+          "key": "bicycle_wheel_size",
+          "value": "260",
+          "values": [
+            "260"
+          ],
+          "key_label": "Taille de roue",
+          "value_label": "26\" (ETRTO 559)",
+          "value_label_reader": "26 pouces, E.T.R.T.O 559",
+          "generic": true
+        },
+        {
+          "key": "condition",
+          "value": "etatneuf",
+          "values": [
+            "etatneuf"
+          ],
+          "key_label": "État",
+          "value_label": "État neuf",
+          "generic": true
+        },
+        {
+          "key": "accessories_univers",
+          "value": "mixte",
+          "values": [
+            "mixte"
+          ],
+          "key_label": "Univers",
+          "value_label": "Mixte",
+          "generic": true
+        },
+        {
+          "key": "shipping_type",
+          "value": "distance",
+          "values": [
+            "distance",
+            "face_to_face"
+          ],
+          "value_label": "distance",
+          "generic": false
+        },
+        {
+          "key": "shipping_cost",
+          "value": "0",
+          "values": [
+            "0"
+          ],
+          "value_label": "0",
+          "generic": false
+        },
+        {
+          "key": "shippable",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "is_import",
+          "value": "false",
+          "values": [
+            "false"
+          ],
+          "value_label": "false",
+          "generic": false
+        },
+        {
+          "key": "payment_methods",
+          "value": "installments3x",
+          "values": [
+            "installments3x",
+            "installments4x"
+          ],
+          "value_label": "installments3x",
+          "generic": false
+        }
+      ],
+      "location": {
+        "country_id": "FR",
+        "region_id": "2",
+        "region_name": "Aquitaine",
+        "department_id": "33",
+        "department_name": "Gironde",
+        "city_label": "Bordeaux 33000",
+        "city": "Bordeaux",
+        "zipcode": "33000",
+        "lat": 44.836,
+        "lng": -0.581,
+        "source": "city",
+        "provider": "here",
+        "type": "",
+        "origin_type": "",
+        "is_shape": true,
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -0.58105,
+              44.8367
+            ]
+          },
+          "properties": null
+        }
+      },
+      "owner": {
+        "store_id": "10000001",
+        "user_id": "00000000-0000-4000-8000-000000000001",
+        "type": "private",
+        "name": "Vendeur A",
+        "no_salesmen": true,
+        "activity_sector": ""
+      },
+      "options": {
+        "has_option": false,
+        "booster": false,
+        "photosup": false,
+        "urgent": false,
+        "gallery": false,
+        "sub_toplist": false,
+        "continuous_top_ads": false,
+        "highlight": false
+      },
+      "has_phone": false,
+      "is_boosted": true,
+      "similar": null,
+      "counters": {},
+      "buyer_fee": {
+        "amount": 199
+      },
+      "shipping_fees": [
+        {
+          "shipping_type": "custom_shipping",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "list_id": 3282334506,
+      "first_publication_date": "2026-10-04 20:36:55",
+      "index_date": "2026-10-15 20:08:52",
+      "status": "active",
+      "category_id": "55",
+      "category_name": "Vélos",
+      "subject": "Velo cargo babboe carve",
+      "body": "Description de l'annonce, retirée des fixtures.",
+      "brand": "leboncoin",
+      "ad_type": "offer",
+      "url": "https://www.leboncoin.fr/ad/velos/3282334506",
+      "price": [
+        1900
+      ],
+      "price_cents": 190000,
+      "images": {
+        "thumb_url": "https://img.leboncoin.fr/fixture.jpg",
+        "small_url": "https://img.leboncoin.fr/fixture.jpg",
+        "nb_images": 5,
+        "urls": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_thumb": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_large": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ]
+      },
+      "attributes": [
+        {
+          "key": "profile_picture_url",
+          "value": "https://img.leboncoin.fr/fixture.jpg",
+          "values": [
+            "https://img.leboncoin.fr/fixture.jpg"
+          ],
+          "value_label": "https://img.leboncoin.fr/fixture.jpg",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_weight",
+          "value": "70000",
+          "values": [
+            "70000"
+          ],
+          "value_label": "70000",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_size",
+          "value": "L",
+          "values": [
+            "L"
+          ],
+          "value_label": "L",
+          "generic": false
+        },
+        {
+          "key": "is_bundleable",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "purchase_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "negotiation_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "pricing_product",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "value_label": "cargo",
+          "generic": false
+        },
+        {
+          "key": "country_isocode3166",
+          "value": "FR",
+          "values": [
+            "FR"
+          ],
+          "value_label": "FR",
+          "generic": false
+        },
+        {
+          "key": "bicycle_type",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "key_label": "Type",
+          "value_label": "Vélo cargo",
+          "generic": true
+        },
+        {
+          "key": "bicycle_size",
+          "value": "L",
+          "values": [
+            "L"
+          ],
+          "key_label": "Taille",
+          "value_label": "L",
+          "generic": true
+        },
+        {
+          "key": "bicycle_brand",
+          "value": "autre",
+          "values": [
+            "autre"
+          ],
+          "key_label": "Marque",
+          "value_label": "Autre",
+          "generic": true
+        },
+        {
+          "key": "bicycle_color",
+          "value": "gris",
+          "values": [
+            "gris"
+          ],
+          "key_label": "Couleur",
+          "value_label": "Gris",
+          "generic": true
+        },
+        {
+          "key": "bicycle_wheel_size",
+          "value": "autre",
+          "values": [
+            "autre"
+          ],
+          "key_label": "Taille de roue",
+          "value_label": "Autre",
+          "generic": true
+        },
+        {
+          "key": "condition",
+          "value": "bonetat",
+          "values": [
+            "bonetat"
+          ],
+          "key_label": "État",
+          "value_label": "Bon état",
+          "generic": true
+        },
+        {
+          "key": "accessories_univers",
+          "value": "mixte",
+          "values": [
+            "mixte"
+          ],
+          "key_label": "Univers",
+          "value_label": "Mixte",
+          "generic": true
+        },
+        {
+          "key": "shipping_type",
+          "value": "face_to_face",
+          "values": [
+            "face_to_face"
+          ],
+          "value_label": "face_to_face",
+          "generic": false
+        },
+        {
+          "key": "shippable",
+          "value": "false",
+          "values": [
+            "false"
+          ],
+          "value_label": "false",
+          "generic": false
+        },
+        {
+          "key": "is_import",
+          "value": "false",
+          "values": [
+            "false"
+          ],
+          "value_label": "false",
+          "generic": false
+        },
+        {
+          "key": "old_price",
+          "value": "2000",
+          "values": [
+            "2000"
+          ],
+          "value_label": "2000",
+          "generic": false
+        },
+        {
+          "key": "payment_methods",
+          "value": "installments3x",
+          "values": [
+            "installments3x",
+            "installments4x"
+          ],
+          "value_label": "installments3x",
+          "generic": false
+        }
+      ],
+      "location": {
+        "country_id": "FR",
+        "region_id": "2",
+        "region_name": "Aquitaine",
+        "department_id": "33",
+        "department_name": "Gironde",
+        "city_label": "Pessac 33600",
+        "city": "Pessac",
+        "zipcode": "33600",
+        "lat": 44.779,
+        "lng": -0.671,
+        "source": "address",
+        "provider": "here",
+        "type": "",
+        "origin_type": "",
+        "is_shape": false,
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -0.67156,
+              44.77964
+            ]
+          },
+          "properties": null
+        }
+      },
+      "owner": {
+        "store_id": "10000002",
+        "user_id": "00000000-0000-4000-8000-000000000002",
+        "type": "private",
+        "name": "Vendeur B",
+        "no_salesmen": true,
+        "activity_sector": ""
+      },
+      "options": {
+        "has_option": false,
+        "booster": false,
+        "photosup": false,
+        "urgent": false,
+        "gallery": false,
+        "sub_toplist": false,
+        "continuous_top_ads": false,
+        "highlight": false
+      },
+      "has_phone": false,
+      "is_boosted": true,
+      "similar": null,
+      "counters": {},
+      "buyer_fee": {
+        "amount": 199
+      }
+    },
+    {
+      "list_id": 3223191305,
+      "first_publication_date": "2026-06-26 14:12:26",
+      "index_date": "2026-10-19 19:51:43",
+      "status": "active",
+      "category_id": "55",
+      "category_name": "Vélos",
+      "subject": "Vélo cargo électrique Longtail neuf",
+      "body": "Description de l'annonce, retirée des fixtures.",
+      "brand": "leboncoin",
+      "ad_type": "offer",
+      "url": "https://www.leboncoin.fr/ad/velos/3223191305",
+      "price": [
+        1600
+      ],
+      "price_cents": 160000,
+      "images": {
+        "thumb_url": "https://img.leboncoin.fr/fixture.jpg",
+        "small_url": "https://img.leboncoin.fr/fixture.jpg",
+        "nb_images": 6,
+        "urls": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_thumb": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ],
+        "urls_large": [
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg",
+          "https://img.leboncoin.fr/fixture.jpg"
+        ]
+      },
+      "attributes": [
+        {
+          "key": "rating_score",
+          "value": "1",
+          "values": [
+            "1"
+          ],
+          "value_label": "1",
+          "generic": false
+        },
+        {
+          "key": "rating_count",
+          "value": "2",
+          "values": [
+            "2"
+          ],
+          "value_label": "2",
+          "generic": false
+        },
+        {
+          "key": "profile_picture_url",
+          "value": "https://img.leboncoin.fr/fixture.jpg",
+          "values": [
+            "https://img.leboncoin.fr/fixture.jpg"
+          ],
+          "value_label": "https://img.leboncoin.fr/fixture.jpg",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_weight",
+          "value": "150000",
+          "values": [
+            "150000"
+          ],
+          "value_label": "150000",
+          "generic": false
+        },
+        {
+          "key": "estimated_parcel_size",
+          "value": "L",
+          "values": [
+            "L"
+          ],
+          "value_label": "L",
+          "generic": false
+        },
+        {
+          "key": "is_bundleable",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "purchase_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "negotiation_cta_visible",
+          "value": "true",
+          "values": [
+            "true"
+          ],
+          "value_label": "true",
+          "generic": false
+        },
+        {
+          "key": "pricing_product",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "value_label": "cargo",
+          "generic": false
+        },
+        {
+          "key": "country_isocode3166",
+          "value": "FR",
+          "values": [
+            "FR"
+          ],
+          "value_label": "FR",
+          "generic": false
+        },
+        {
+          "key": "bicycle_type",
+          "value": "cargo",
+          "values": [
+            "cargo"
+          ],
+          "key_label": "Type",
+          "value_label": "Vélo cargo",
+          "generic": true
+        },
+        {
+          "key": "bicycle_size",
+          "value": "M",
+          "values": [
+            "M"
+          ],
+          "key_label": "Taille",
+          "value_label": "M",
+          "generic": true
+        },
+        {
+          "key": "bicycle_color",
+          "value": "vert",
+          "values": [
+            "vert"
+          ],
+          "key_label": "Couleur",
+          "value_label": "Vert",
+          "generic": true
+        },
+        {
+          "key": "bicycle_wheel_size",
+          "value": "200",
+          "values": [
+            "200"
+          ],
+          "key_label": "Taille de roue",
+          "value_label": "20\" (ETRTO 406)",
+          "value_label_reader": "20 pouces, E.T.R.T.O 406",
+          "generic": true
+        },
+        {
+          "key": "condition",
+          "value": "etatneuf",
+          "values": [
+            "etatneuf"
+          ],
+          "key_label": "État",
+          "value_label": "État neuf",
+          "generic": true
+        },
+        {
+          "key": "accessories_univers",
+          "value": "mixte",
+          "values": [
+            "mixte"
+          ],
+          "key_label": "Univers",
+          "value_label": "Mixte",
+          "generic": true
+        },
+        {
+          "key": "shipping_type",
+          "value": "face_to_face",
+          "values": [
+            "face_to_face"
+          ],
+          "value_label": "face_to_face",
+          "generic": false
+        },
+        {
+          "key": "shippable",
+          "value": "false",
+          "values": [
+            "false"
+          ],
+          "value_label": "false",
+          "generic": false
+        },
+        {
+          "key": "is_import",
+          "value": "false",
+          "values": [
+            "false"
+          ],
+          "value_label": "false",
+          "generic": false
+        },
+        {
+          "key": "payment_methods",
+          "value": "installments3x",
+          "values": [
+            "installments3x",
+            "installments4x"
+          ],
+          "value_label": "installments3x",
+          "generic": false
+        }
+      ],
+      "location": {
+        "country_id": "FR",
+        "region_id": "2",
+        "region_name": "Aquitaine",
+        "department_id": "33",
+        "department_name": "Gironde",
+        "city_label": "Bordeaux 33000",
+        "city": "Bordeaux",
+        "zipcode": "33000",
+        "lat": 44.836,
+        "lng": -0.581,
+        "source": "city",
+        "provider": "here",
+        "type": "",
+        "origin_type": "",
+        "is_shape": true,
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -0.58105,
+              44.8367
+            ]
+          },
+          "properties": null
+        }
+      },
+      "owner": {
+        "store_id": "10000003",
+        "user_id": "00000000-0000-4000-8000-000000000003",
+        "type": "private",
+        "name": "Vendeur C",
+        "no_salesmen": true,
+        "activity_sector": ""
+      },
+      "options": {
+        "has_option": false,
+        "booster": false,
+        "photosup": false,
+        "urgent": false,
+        "gallery": false,
+        "sub_toplist": false,
+        "continuous_top_ads": false,
+        "highlight": false
+      },
+      "has_phone": false,
+      "is_boosted": true,
+      "similar": null,
+      "counters": {},
+      "buyer_fee": {
+        "amount": 199
+      }
+    }
+  ],
+  "applied_condition": 0,
+  "human_readable_applied_condition": "all_cat_relevance_ipsv2_with_optimized_body"
+}
