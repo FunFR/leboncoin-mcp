@@ -85,3 +85,52 @@ async def test_search_with_a_single_price_bound_leaves_the_other_open(
     low, high = leboncoin.last_search["price"]
     assert low == 0
     assert high == 300
+
+
+async def test_search_returns_one_page_and_tells_whether_more_exist(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    result = await call("search_ads", {"limit": 50, "page": 2})
+
+    assert leboncoin.last_search["limit"] == 50
+    assert leboncoin.last_search["page"] == 2
+    assert result.structured_content["page"] == 2
+    assert result.structured_content["has_next_page"] is True
+
+
+async def test_search_has_no_next_page_past_the_total(call: Call) -> None:
+    result = await call("search_ads", {"limit": 35, "page": 7})
+
+    assert result.structured_content["has_next_page"] is False
+
+
+async def test_search_returns_35_ads_by_default_and_100_at_most(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    await call("search_ads", {})
+    assert leboncoin.last_search["limit"] == 35
+
+    result = await call("search_ads", {"limit": 101})
+    assert result.is_error
+
+
+async def test_search_url_replaces_criteria(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    url = "https://www.leboncoin.fr/recherche?category=55&text=cargo"
+
+    await call("search_ads", {"url": url, "page": 3})
+
+    assert leboncoin.last_search == {"url": url, "limit": 35, "page": 3}
+
+
+async def test_search_url_cannot_be_mixed_with_criteria(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    result = await call(
+        "search_ads",
+        {"url": "https://www.leboncoin.fr/recherche?text=cargo", "text": "vélo"},
+    )
+
+    assert "replaces" in error_text(result)
+    assert leboncoin.calls == []
