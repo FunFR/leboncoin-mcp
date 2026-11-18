@@ -1,0 +1,70 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:best-practices"
+    ],
+    "semanticCommits": "enabled",
+    "timezone": "Europe/Paris",
+    "dependencyDashboard": true,
+    "pre-commit": {
+        "enabled": true
+    },
+    "packageRules": [
+        {
+            "matchUpdateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest",
+                "lockFileMaintenance"
+            ],
+            "automerge": true
+        },
+        {
+            "description": "Development tools never change the released image.",
+            "matchDepTypes": [
+                "dependency-groups"
+            ],
+            "semanticCommitType": "chore"
+        },
+        {
+            "description": "The base image ships in every release, so its updates are released.",
+            "matchManagers": [
+                "dockerfile"
+            ],
+            "semanticCommitType": "fix"
+        },
+        {
+            "matchDepTypes": [
+                "project.dependencies",
+                "dependency-groups"
+            ],
+            "rangeStrategy": "update-lockfile"
+        },
+        {
+            "matchManagers": [
+                "github-actions"
+            ],
+            "semanticCommitType": "ci"
+        },
+        {
+            "description": "The compose file follows the image this repository publishes.",
+            "matchPackageNames": [
+                "ghcr.io/funfr/leboncoin-mcp"
+            ],
+            "enabled": false
+        },
+        {
+            "matchDatasources": [
+                "pypi"
+            ],
+            "minimumReleaseAge": "3 days"
+        }
+    ],
+    "lockFileMaintenance": {
+        "enabled": true,
+        "description": "Refreshes transitive dependencies such as curl_cffi, which lbc relies on to pass anti-bot checks, and releases them.",
+        "semanticCommitType": "fix"
+    },
+    "osvVulnerabilityAlerts": true
+}

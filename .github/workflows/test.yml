@@ -1,0 +1,80 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - name: Install dependencies
+        run: uv sync --frozen
+      - name: Lint with ruff
+        run: uv run ruff check --output-format=github .
+      - name: Check formatting with ruff
+        run: uv run ruff format --check .
+      - name: Check types with mypy
+        run: uv run mypy src tests scripts
+      - name: Run tests with coverage
+        run: uv run pytest
+
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - name: Scan dependencies for known vulnerabilities
+        run: |
+          uv export --frozen --no-hashes --no-emit-project -o requirements-audit.txt
+          uv run --frozen pip-audit -r requirements-audit.txt --disable-pip --no-deps
+
+  stack:
+    name: Stack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - name: Start the stack from the sources
+        run: docker compose up --build --detach --wait
+      # A block by Leboncoin passes: runners use datacenter addresses.
+      - name: Check the stack end to end
+        run: uv run --frozen python scripts/stack_check.py
+      - name: Show the server logs
+        if: failure()
+        run: docker compose logs
+      # Trivy runs from its image pinned by digest: its action had tags hijacked in 2026.
+      - name: Export the image for scanning
+        run: docker save --output image.tar ghcr.io/funfr/leboncoin-mcp:latest
+      - name: Scan the image for vulnerabilities
+        uses: docker://aquasec/trivy:0.76.2@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb
+        with:
+          args: image --input image.tar --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed

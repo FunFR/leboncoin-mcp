@@ -8,13 +8,26 @@ import argparse
 import sys
 
 import anyio
+import httpx
 from mcp import Client
 from mcp.types import TextContent
 
 TOOLS = {"search_ads", "get_ad", "get_seller"}
 
 
+async def wait_for(url: str, attempts: int = 30) -> None:
+    """Gives a freshly started container time to listen."""
+    for _ in range(attempts - 1):
+        try:
+            async with httpx.AsyncClient() as http:
+                await http.get(url)
+            return
+        except httpx.TransportError:
+            await anyio.sleep(1)
+
+
 async def check(url: str, require_live: bool) -> str | None:
+    await wait_for(url)
     async with Client(url) as client:
         tools = {tool.name for tool in (await client.list_tools()).tools}
         if tools != TOOLS:
