@@ -1,6 +1,8 @@
 # Leboncoin MCP
 
-[![Release](https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml/badge.svg)](https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml)
+[![GitHub Release][releases-shield]][releases]
+[![Release][release-workflow-shield]][release-workflow]
+[![License][license-shield]][license]
 
 A read-only [MCP](https://modelcontextprotocol.io) server for [Leboncoin](https://www.leboncoin.fr) classified ads, so an assistant such as Claude can find items to buy and assess their sellers. It never logs into a Leboncoin account.
 
@@ -71,3 +73,10 @@ Each merge with a `feat` or `fix` commit is released and published as `ghcr.io/f
 ## License
 
 [Apache-2.0](LICENSE)
+
+[releases]: https://github.com/FunFR/leboncoin-mcp/releases
+[releases-shield]: https://img.shields.io/github/release/FunFR/leboncoin-mcp.svg
+[release-workflow]: https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml
+[release-workflow-shield]: https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml/badge.svg
+[license]: LICENSE
+[license-shield]: https://img.shields.io/github/license/FunFR/leboncoin-mcp.svg
