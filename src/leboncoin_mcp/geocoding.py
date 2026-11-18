@@ -39,7 +39,10 @@ class GeoApiGeocoder:
             response = await self._http.get(COMMUNES, params=params)
             response.raise_for_status()
         except httpx.HTTPError as error:
-            raise ToolError(f"Could not locate {name!r}: {error}") from error
+            raise ToolError(
+                f"Could not locate {name!r}: the city service failed. "
+                f"Retry without cities, using departments instead. Cause: {error}"
+            ) from error
         found: list[dict[str, Any]] = response.json()
         exact = [commune for commune in found if same_name(commune["nom"], name)]
         if len(exact) == 1:
