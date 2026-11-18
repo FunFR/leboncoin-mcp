@@ -229,7 +229,7 @@ def build_server(leboncoin: Leboncoin, geocoder: Geocoder) -> MCPServer:
         return found
 
     @mcp.tool()
-    async def search_ads(
+    async def search_ads(  # noqa: PLR0913, PLR0917 - each argument is a criterion
         text: str | None = None,
         category: str | None = None,
         cities: list[CityQuery] | None = None,

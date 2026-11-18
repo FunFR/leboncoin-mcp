@@ -3,10 +3,14 @@
 import difflib
 import re
 import unicodedata
+from collections.abc import Sequence
 from enum import Enum
 
 from lbc import Category, Department, Region
 from mcp.server.mcpserver.exceptions import ToolError
+
+# Every name maps to the members it may designate: one, or several when shared.
+type Aliases[E: Enum] = dict[str, list[E]]
 
 
 def _key(name: str) -> str:
@@ -25,34 +29,46 @@ def _readable(member: Enum) -> str:
     return member.name.replace("_", " ").capitalize()
 
 
-def _match[E: Enum](kind: str, query: str, aliases: dict[str, E]) -> E:
-    """Finds the member a name designates, or suggests what may have been meant."""
-    key = _key(query)
-    if key in aliases:
-        return aliases[key]
-    close = difflib.get_close_matches(key, list(aliases), n=5, cutoff=0.6)
-    suggestions = list(dict.fromkeys(_readable(aliases[name]) for name in close))
-    hint = f" Did you mean: {', '.join(suggestions)}?" if suggestions else ""
+def _listing(members: Sequence[Enum]) -> str:
+    return ", ".join(dict.fromkeys(_readable(member) for member in members))
+
+
+def _match[E: Enum](kind: str, query: str, aliases: Aliases[E]) -> E:
+    """Finds the member a name designates, or explains what may have been meant."""
+    meant = aliases.get(_key(query), [])
+    if len(meant) == 1:
+        return meant[0]
+    if meant:
+        raise ToolError(f"Several {kind}s are named {query!r}: {_listing(meant)}.")
+    close = difflib.get_close_matches(_key(query), list(aliases), n=5, cutoff=0.6)
+    suggestions = [member for name in close for member in aliases[name]]
+    hint = f" Did you mean: {_listing(suggestions)}?" if suggestions else ""
     raise ToolError(f"Unknown {kind} {query!r}.{hint}")
 
 
-def _category_aliases() -> dict[str, Category]:
+def _alias[E: Enum](aliases: Aliases[E], name: str, member: E) -> None:
+    members = aliases.setdefault(_key(name), [])
+    if member not in members:
+        members.append(member)
+
+
+def _category_aliases() -> Aliases[Category]:
     """Each category answers to its full name and to its name within its parent."""
     names = {member.name for member in Category}
-    aliases: dict[str, Category] = {}
+    aliases: Aliases[Category] = {_key(member.name): [member] for member in Category}
     for member in Category:
-        aliases[_key(member.name)] = member
         parents = [p for p in names if member.name.startswith(f"{p}_")]
         if parents:
             short = member.name.removeprefix(f"{max(parents, key=len)}_")
-            aliases.setdefault(_key(short), member)
+            if _key(short) not in names:
+                _alias(aliases, short, member)
     return aliases
 
 
 CATEGORIES = _category_aliases()
 
-CURRENT_REGIONS = {
-    _key(region.name): region
+CURRENT_REGIONS: Aliases[Region] = {
+    _key(region.name): [region]
     for region in (
         Region.AUVERGNE_RHONE_ALPES,
         Region.BOURGOGNE_FRANCHE_COMTE,
@@ -81,19 +97,20 @@ OVERSEAS_DEPARTMENTS = {
     "973": Region.GUYANE,
     "974": Region.REUNION,
 }
-CORSICAN_DEPARTMENTS = {_key(name) for name in ("2A", "2B", "Corse-du-Sud", "Haute-Corse")}
+CORSICAN_DEPARTMENTS = {
+    _key(name) for name in ("2A", "2B", "Corse-du-Sud", "Haute-Corse")
+}
 
 
-def _department_aliases() -> dict[str, Department | Region]:
-    aliases: dict[str, Department | Region] = {}
+def _department_aliases() -> Aliases[Department | Region]:
+    aliases: Aliases[Department | Region] = {}
     for member in Department:
         number = member.value[2]
-        aliases[_key(member.name)] = member
-        aliases[number] = member
-        aliases[number.zfill(2)] = member
+        for name in (member.name, number, number.zfill(2)):
+            _alias(aliases, name, member)
     for number, region in OVERSEAS_DEPARTMENTS.items():
-        aliases[number] = region
-        aliases[_key(region.name)] = region
+        _alias(aliases, number, region)
+        _alias(aliases, region.name, region)
     return aliases
 
 

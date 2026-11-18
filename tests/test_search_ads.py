@@ -1,6 +1,6 @@
 from lbc import AdType, Category, OwnerType, Sort
 
-from tests.conftest import Call, error_text, FakeLeboncoin
+from tests.conftest import Call, FakeLeboncoin, error_text
 
 
 async def test_search_returns_ad_summaries_and_total(call: Call) -> None:
@@ -32,7 +32,7 @@ async def test_search_passes_criteria_to_leboncoin(
         "search_ads",
         {
             "text": "vélo cargo",
-            "category": "velos",
+            "category": "loisirs velos",
             "price_min": 100,
             "price_max": 900,
             "seller_type": "private",
@@ -44,7 +44,7 @@ async def test_search_passes_criteria_to_leboncoin(
     assert not result.is_error
     criteria = leboncoin.last_search
     assert criteria["text"] == "vélo cargo"
-    assert criteria["category"] is Category.VEHICULES_VELOS
+    assert criteria["category"] is Category.LOISIRS_VELOS
     assert criteria["price"] == [100, 900]
     assert criteria["owner_type"] is OwnerType.PRIVATE
     assert criteria["shippable"] is True
@@ -140,3 +140,22 @@ async def test_search_has_no_next_page_past_what_leboncoin_serves(call: Call) ->
     result = await call("search_ads", {"limit": 1, "page": 80})
 
     assert result.structured_content["has_next_page"] is False
+
+
+async def test_search_lists_the_categories_an_ambiguous_name_could_mean(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    result = await call("search_ads", {"category": "vélos"})
+
+    message = error_text(result)
+    assert "Vehicules velos" in message
+    assert "Loisirs velos" in message
+    assert leboncoin.calls == []
+
+
+async def test_search_takes_a_category_by_its_name_within_its_parent(
+    call: Call, leboncoin: FakeLeboncoin
+) -> None:
+    await call("search_ads", {"category": "Voitures"})
+
+    assert leboncoin.last_search["category"] is Category.VEHICULES_VOITURES

@@ -20,7 +20,7 @@ class Settings:
     path: str
 
     @staticmethod
-    def from_env(env: Mapping[str, str]) -> "Settings":
+    def from_env(env: Mapping[str, str]) -> Settings:
         transport = env.get("MCP_TRANSPORT", "stdio")
         if transport not in TRANSPORTS:
             raise ValueError(f"MCP_TRANSPORT must be one of {', '.join(TRANSPORTS)}.")

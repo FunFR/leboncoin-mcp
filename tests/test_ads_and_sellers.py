@@ -24,9 +24,7 @@ async def test_get_ad_returns_the_full_ad(call: Call) -> None:
     }
 
 
-async def test_get_ad_accepts_the_ad_url(
-    call: Call, leboncoin: FakeLeboncoin
-) -> None:
+async def test_get_ad_accepts_the_ad_url(call: Call, leboncoin: FakeLeboncoin) -> None:
     await call("get_ad", {"ad": "https://www.leboncoin.fr/ad/velos/3291258592"})
 
     assert leboncoin.calls == [("get_ad", {"ad_id": "3291258592"})]
@@ -52,7 +50,9 @@ async def test_an_unavailable_ad_is_reported_as_such(
 
 
 async def test_get_seller_returns_reputation(call: Call) -> None:
-    result = await call("get_seller", {"seller_id": "00000000-0000-4000-8000-000000000001"})
+    result = await call(
+        "get_seller", {"seller_id": "00000000-0000-4000-8000-000000000001"}
+    )
 
     seller = result.structured_content
     assert seller == {

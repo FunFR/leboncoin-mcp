@@ -1,7 +1,7 @@
 from lbc import City, Department, Region
 
 from leboncoin_mcp.geocoding import CityPoint
-from tests.conftest import Call, error_text, FakeGeocoder, FakeLeboncoin
+from tests.conftest import Call, FakeGeocoder, FakeLeboncoin, error_text
 
 
 async def test_departments_are_named_by_name_or_number(
@@ -48,9 +48,7 @@ async def test_regions_are_the_current_ones(
     ]
 
 
-async def test_a_former_region_is_refused(
-    call: Call, leboncoin: FakeLeboncoin
-) -> None:
+async def test_a_former_region_is_refused(call: Call, leboncoin: FakeLeboncoin) -> None:
     result = await call("search_ads", {"regions": ["Aquitaine"]})
 
     assert result.is_error

@@ -1,7 +1,7 @@
 import json
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 from pathlib import Path
-from collections.abc import Awaitable, Callable
 from typing import Any
 
 import pytest
@@ -22,7 +22,7 @@ def load(name: str) -> dict[str, Any]:
 
 @dataclass
 class FakeLeboncoin:
-    """Stands in for `lbc.Client`, answering with real lbc models built from fixtures."""
+    """Stands in for `lbc.Client`, answering with lbc models built from fixtures."""
 
     search_raw: dict[str, Any] = field(default_factory=lambda: load("search"))
     ad_raw: dict[str, Any] = field(default_factory=lambda: load("ad"))
