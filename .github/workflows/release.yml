@@ -15,8 +15,13 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Test
+    uses: $/.github/workflows/test.yml
+
   release:
     name: Release
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: write

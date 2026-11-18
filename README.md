@@ -1,6 +1,6 @@
 # Leboncoin MCP
 
-[![Test](https://github.com/FunFR/leboncoin-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/FunFR/leboncoin-mcp/actions/workflows/test.yml)
+[![Release](https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml/badge.svg)](https://github.com/FunFR/leboncoin-mcp/actions/workflows/release.yml)
 
 A read-only [MCP](https://modelcontextprotocol.io) server for [Leboncoin](https://www.leboncoin.fr) classified ads, so an assistant such as Claude can find items to buy and assess their sellers. It never logs into a Leboncoin account.
 
