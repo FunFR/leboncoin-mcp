@@ -17,6 +17,10 @@ def _key(name: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", ascii_name.upper())
 
 
+def same_name(left: str, right: str) -> bool:
+    return _key(left) == _key(right)
+
+
 def _readable(member: Enum) -> str:
     return member.name.replace("_", " ").capitalize()
 

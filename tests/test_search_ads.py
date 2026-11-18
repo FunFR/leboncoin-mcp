@@ -134,3 +134,9 @@ async def test_search_url_cannot_be_mixed_with_criteria(
 
     assert "replaces" in error_text(result)
     assert leboncoin.calls == []
+
+
+async def test_search_has_no_next_page_past_what_leboncoin_serves(call: Call) -> None:
+    result = await call("search_ads", {"limit": 1, "page": 80})
+
+    assert result.structured_content["has_next_page"] is False
