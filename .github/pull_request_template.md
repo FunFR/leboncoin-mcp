@@ -12,5 +12,5 @@ Refs: <!-- fixes #, or issue link -->
 ## Checks
 
 - [ ] Tried against the real Leboncoin with `docker compose up --build` and `scripts/stack_check.py --require-live`
-- [ ] No real names, user ids or ad ids in tests, fixtures or logs
+- [ ] No seller names, user ids or ad descriptions in tests, fixtures or logs
 - [ ] `README.md` updated if behavior or setup changed
