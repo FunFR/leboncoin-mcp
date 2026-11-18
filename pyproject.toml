@@ -1,13 +1,14 @@
 [project]
 name = "leboncoin-mcp"
 version = "0.1.0"
-description = "Add your description here"
+description = "Read-only MCP server for Leboncoin classified ads"
 readme = "README.md"
 authors = [
     { name = "FunFR", email = "1670065+FunFR@users.noreply.github.com" }
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "httpx>=0.28.1",
     "lbc>=1.1.9",
     "mcp>=2.3.0",
 ]
@@ -30,3 +31,25 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.17.5",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "PL"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "--cov=leboncoin_mcp --cov-report=term-missing --cov-report=xml"
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
