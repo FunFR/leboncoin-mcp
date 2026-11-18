@@ -74,7 +74,9 @@ jobs:
       # Trivy runs from its image pinned by digest: its action had tags hijacked in 2026.
       - name: Export the image for scanning
         run: docker save --output image.tar ghcr.io/funfr/leboncoin-mcp:latest
-      - name: Scan the image for vulnerabilities
+      # Only what this repository can fix blocks: Debian packages wait for a new
+      # base image, which the Scan workflow reports outside pull requests.
+      - name: Scan the Python packages for vulnerabilities
         uses: docker://aquasec/trivy:0.76.2@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb
         with:
-          args: image --input image.tar --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed
+          args: image --input image.tar --pkg-types library --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed

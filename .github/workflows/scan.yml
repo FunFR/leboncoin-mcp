@@ -1,0 +1,32 @@
+name: Scan
+
+# The whole image, Debian packages included. Not run on pull requests: a fix
+# in the base image can only be waited for and must not hold dependency
+# updates. A failure here sends GitHub's usual workflow failure notification.
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Build the image
+        run: docker build --tag leboncoin-mcp:scan .
+      - name: Export the image for scanning
+        run: docker save --output image.tar leboncoin-mcp:scan
+      # Trivy runs from its image pinned by digest: its action had tags hijacked in 2026.
+      - name: Scan the image for vulnerabilities
+        uses: docker://aquasec/trivy:0.76.2@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb
+        with:
+          args: image --input image.tar --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed
