@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.14"
 resolution-markers = [
     "python_full_version >= '3.15'",
@@ -736,15 +736,15 @@ wheels = [
 
 [[package]]
 name = "lbc"
-version = "1.1.9"
+version = "1.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "curl-cffi" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e1/4c/5c4f26e5c1b362a3d7e5e5a08437054e6743e09df08a679a502ef580c92b/lbc-1.1.9.tar.gz", hash = "sha256:ddb02906d3ad0f1d25cb9ed8368767e00c357cfa43e7cbe0618ac479b11b917e", size = 17714, upload-time = "2026-11-03T20:09:35.269Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5a/8c/062d9fa500f83ed6cb1cdb4d428c3510b8c10bba1bfd353d807cbddd1e5e/lbc-1.2.0.tar.gz", hash = "sha256:9ec329e4967bc2cb1639a143e4c9c4d6305a420f33648707186c9952e9388227", size = 17750, upload-time = "2026-11-19T01:15:31.708Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7c/97/9c8374c111717c20cedfee590a5acc7eb32e27dec4b2702d8d2ff7d4a45a/lbc-1.1.9-py3-none-any.whl", hash = "sha256:538283513f7d8e49ae97f83297306c721b65f894fba359d9d962029b171442e2", size = 21208, upload-time = "2026-11-03T20:09:34.156Z" },
+    { url = "https://files.pythonhosted.org/packages/6f/f9/3b301317de19cec8d10d1c01aca1736d923f5f97f54778e7c159634ce3c9/lbc-1.2.0-py3-none-any.whl", hash = "sha256:334e0d5b68e125b1c55434e85246fd06753d44a8a31b9ad29538359cab362819", size = 21237, upload-time = "2026-11-19T01:15:30.422Z" },
 ]
 
 [[package]]
